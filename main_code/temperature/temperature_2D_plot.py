@@ -1,5 +1,4 @@
 """Make some plots of the AROME model 2D temperature"""
-
 import cartopy.crs as ccrs
 import matplotlib.pyplot as plt
 import metpy.calc as mpcalc

@@ -5,11 +5,11 @@ You have to change it!
 
 # -------------------------------------------To change --------------------------------------------------------
 # Folder where the data is saved:
-data_folder = "/home/wieser/Dokumente/Teamx/teamxcoldpool/Data"
+data_folder = "D:/MSc_Arbeit/data/"
 # Folder where the model output is saved:
-model_folder = "/media/wieser/PortableSSD/Dokumente/TEAMx"
+model_folder = "D:/MSc_Arbeit/"
 # Plot directory (where to save the plots)
-dir_PLOTS = "/home/wieser/Dokumente/Teamx/teamxcoldpool/Plots"
+dir_PLOTS = "D:/MSc_Arbeit/plots/"
 # -------------------------------------------------------------------------------------------------------------
 
 radiosonde_csv = f"{data_folder}/Observations/Radiosonde/2017101603_bufr309052.csv"  # radiosonden aufstieg at innsbruck airport

@@ -74,10 +74,11 @@ def create_clipped_dem(data):
     out_img, out_transform = mask(dataset=data, shapes=coords, crop=True)
     out_meta = data.meta.copy()
 
-    epsg_code = int(data.crs.data['init'][5:])
+    # epsg_code = int(data.crs.data['init'][5:])
     out_meta.update(
         {"driver": "GTiff", "height": out_img.shape[1], "width": out_img.shape[2], "transform": out_transform,
-         "crs": pycrs.parse.from_epsg_code(epsg_code).to_proj4()})
+         "crs": pycrs.parse.from_epsg_code(4326).to_proj4()})  # hard-coded EPSG code for WGS84 cause data['init'] not available
+    # original: "crs": pycrs.parse.from_epsg_code(epsg_code).to_proj4()})
     with rasterio.open(dem_file_hobos_extent, "w", **out_meta) as dest:
         dest.write(out_img)
 
@@ -382,6 +383,7 @@ if __name__ == '__main__':
     create_clipped_dem(data)  # create DEM90 digital elevation model
 
     ds = xr.open_dataset(filepath_arome_height)  # open AROME MODEL Height
+    ds.set_coords(("time"))
     ds = ds.isel(time=0)
 
     ds_large_extent, extent_lat_large, extent_lon_large = select_extent_around_LOWI(dist_degree=0.4)
